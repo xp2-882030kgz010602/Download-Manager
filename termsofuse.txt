@@ -1,0 +1,31 @@
+This terms of use document only applies to my original compositions,
+not arrangements. To make things easier, here is the list of my
+original compositions in this download manager:
+School Mourn, Scarlet Rhapsody
+
+I reserve the right to change this document whenever I want.
+
+DOCUMENT STARTS HERE
+
+Unlike most terms of use documents, which are intentionally filled
+with legal jargon in an attempt to make you just accept them
+instead of actually reading them, I have tried to make 
+this document as transparent as possible.
+1. If you use any part of my compositions in one of your works,
+then you are required to do the following:
+ 1. Provide a download to your work, free of charge. It must not be
+ obsfucated, and if that work is a piece of music, to provide the
+ download in a format that preserves all note data. In addition, there
+ cannot be a download key that is required to download the work (like
+ in some bowlroll files). What does this mean?
+  1. An example of obsfucation would be a password-protected archive.
+  No extra work (other than archive extraction) should be required to
+  open the download files. Use a well-known archive format, such as
+  zip, rar, or 7z.
+  1. An example of a format that preserves all note data would be
+  a MIDI or MSCZ file. MP3 does not preserve all note data, it only
+  contains audio data.
+ 2. Attach an unmodified copy of this document to the download.
+2. Do not pass off my compositions as your own.
+3. The latest version of this terms of use document takes precedence
+ over earlier versions of this terms of use document.
