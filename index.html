@@ -56,6 +56,7 @@ function draw(){
 			}
 			rect(3*w/4+i*w/16,7*h/10,w/16,h/10);
 		}
+		rect(4*w/5,4*h/5,w/5,h/5);
 	}
 	if(state==="other_music"){
 		for(var i=0;i<2;i++){
@@ -69,6 +70,24 @@ function draw(){
 		rect(3*w/4,h/2,w/8,3*h/10);
 		rect(7*w/8,h/2,w/8,3*h/10);
 	}
+	if(state==="etude_set_1"){
+		for(var i=0;i<6;i++){
+			for(var j=0;j<4;j++){
+				var etude=4*i+j+1;
+				if(etude>22){
+					break;
+				}
+				if(etude>1){
+					rect(i*w/6,h/5+j*3*h/20,w/6,3*h/20);
+					continue;
+				}
+				rect(i*w/6,h/5+j*3*h/20,w/6,3*h/40);
+				for(var k=0;k<4;k++){
+					rect(i*w/6+k*w/24,11*h/40+j*3*h/20,w/24,3*h/40);
+				}
+			}
+		}
+	}
 	noStroke();
 	fill(0,255,255);
 	if(state==="ready"){
@@ -80,15 +99,17 @@ function draw(){
 		text("Freedom\nDive Etudes",w/6,h/2);
 		textSize(get_size(5,w/3,h/2,2));
 		text("Other\nMusic",w/2,h/2);
-		textSize(get_size(11,w/3,h/2,2));
-		text("Etude set 1\nETA son",5*w/6,h/2);
+		textSize(get_size(11,w/3,h/2));
+		text("Etude set 1",5*w/6,h/2);
 		return;
 	}
 	if(state==="freedom_dive_etudes"){
 		textSize(get_size(19,w,h/5));
 		text("Freedom Dive Etudes",w/2,h/10);
-		textSize(get_size(4,w/5,h/5,2));
+		textSize(get_size(4,w/5,h/5));
 		text("Back",w/10,9*h/10);
+		textSize(get_size(10,w/5,h/5,2));
+		text("Download\nall as ZIP",9*w/10,9*h/10);
 		for(var i=0;i<4;i++){
 			for(var j=0;j<3;j++){
 				textSize(get_size(6+((j+3*i+1)+"").length,w/4,h/10));
@@ -117,7 +138,7 @@ function draw(){
 	if(state==="other_music"){
 		textSize(get_size(11,w,h/5));
 		text("Other Music",w/2,h/10);
-		textSize(get_size(4,w/5,h/5,2));
+		textSize(get_size(4,w/5,h/5));
 		text("Back",w/10,9*h/10);
 		textSize(get_size(6,w/2,3*h/10,2));
 		text("School\nMourn",w/4,7*h/20);
@@ -135,6 +156,34 @@ function draw(){
 		text("mp3",11*w/16,13*h/20);
 		text("pdf",15*w/16,13*h/20);
 		return;
+	}
+	if(state==="etude_set_1"){
+		textSize(get_size(11,w,h/5));
+		text("Etude Set 1",w/2,h/10);
+		textSize(get_size(4,w/5,h/5));
+		text("Back",w/10,9*h/10);
+		textSize(get_size(16,w/6,3*h/40));
+		text("Etude 1/1: River",w/12,19*h/80);
+		for(var i=0;i<6;i++){
+			for(var j=0;j<4;j++){
+				var etude=4*i+j+1;
+				if(etude>22){
+					break;
+				}
+				if(etude>1){
+					textSize(get_size(7,w/6,3*h/20));
+					text("ETA son",w/12+i*w/6,11*h/40+3*j*h/20);
+					continue;
+				}
+				textSize(get_size(4,w/24,3*h/40));
+				text("midi",w/48+i*w/6,5*h/16+3*j*h/20);
+				text("mscz",5*w/48+i*w/6,5*h/16+3*j*h/20);
+				textSize(get_size(3,w/24,3*h/40));
+				text("mp3",w/16+i*w/6,5*h/16+3*j*h/20);
+				text("pdf",7*w/48+i*w/6,5*h/16+3*j*h/20);
+				
+			}
+		}
 	}
 };
 function mouseReleased(){
@@ -157,11 +206,17 @@ function mouseReleased(){
 		if(mouseX<2*w/3&&mouseX>w/3&&mouseY>h/5&&mouseY<4*h/5){
 			state="other_music";
 		}
+		if(mouseX>2*w/3&&mouseY>h/5&&mouseY<4*h/5){
+			state="etude_set_1";
+		}
 		return;
 	}
 	if(state==="freedom_dive_etudes"){
 		if(mouseX<w/5&&mouseY>4*h/5){
 			state="ready";
+		}
+		if(mouseX>4*w/5&&mouseY>4*h/5){
+			redirect("./Freedom_Dive_Etudes.zip");
 		}
 		if(mouseX>3*w/4&&mouseY<7*h/10&&mouseY>3*h/5){
 			var f=Math.floor(mouseX*16/w)%4;
@@ -214,6 +269,28 @@ function mouseReleased(){
 			}
 		}
 		return;
+	}
+	if(state==="etude_set_1"){
+		if(mouseX<w/5&&mouseY>4*h/5){
+			state="ready";
+		}
+		if(mouseY>h/5&&mouseY<4*h/5){
+			var x=Math.floor(mouseX*6/w);
+			var y=Math.floor((mouseY-h/5)*40/h/3);
+			if(y%2===0){
+				return;
+			}
+			y=(y-1)/2;
+			var f=Math.floor(mouseX*24/w)%4;
+			var etude=4*x+y+1;
+			var extension=["mid","mp3","mscz","pdf"][f];
+			if(etude>1){
+				return;
+			}
+			if(etude===1){
+				redirect("./Etude 1-1-River."+extension);
+			}
+		}
 	}
 	lastclickframe=frames;
 }
