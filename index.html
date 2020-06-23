@@ -77,7 +77,7 @@ function draw(){
 				if(etude>22){
 					break;
 				}
-				if(etude>6){
+				if(etude>7){
 					rect(i*w/6,h/5+j*3*h/20,w/6,3*h/20);
 					continue;
 				}
@@ -174,13 +174,15 @@ function draw(){
 		text("Etude 1/5: Fourths",w/4,19*h/80);
 		textSize(get_size(17,w/6,3*h/40,2));
 		text("Etude 1/6: Sixths,\nAfter Chopin",w/4,31*h/80);
+		textSize(get_size(16,w/6,3*h/40,1));
+		text("Etude 1/7: March",w/4,43*h/80);
 		for(var i=0;i<6;i++){
 			for(var j=0;j<4;j++){
 				var etude=4*i+j+1;
 				if(etude>22){
 					break;
 				}
-				if(etude>6){
+				if(etude>7){
 					textSize(get_size(7,w/6,3*h/20));
 					text("ETA son",w/12+i*w/6,11*h/40+3*j*h/20);
 					continue;
@@ -294,7 +296,7 @@ function mouseReleased(){
 			var f=Math.floor(mouseX*24/w)%4;
 			var etude=4*x+y+1;
 			var extension=["mid","mp3","mscz","pdf"][f];
-			if(etude>6){
+			if(etude>7){
 				return;
 			}
 			if(etude===1){
@@ -319,6 +321,10 @@ function mouseReleased(){
 			}
 			if(etude===6){
 				redirect("./Etude 1-6-Chopin-Sixths-Version."+extension);
+				return;
+			}
+			if(etude===7){
+				redirect("./Etude 1-7-March."+extension);
 				return;
 			}
 		}
