@@ -77,7 +77,7 @@ function draw(){
 				if(etude>22){
 					break;
 				}
-				if(etude>7){
+				if(etude>8){
 					rect(i*w/6,h/5+j*3*h/20,w/6,3*h/20);
 					continue;
 				}
@@ -140,10 +140,10 @@ function draw(){
 		text("Other Music",w/2,h/10);
 		textSize(get_size(4,w/5,h/5));
 		text("Back",w/10,9*h/10);
-		textSize(get_size(6,w/2,3*h/10,2));
-		text("School\nMourn",w/4,7*h/20);
-		textSize(get_size(8,w/2,3*h/10,2));
-		text("Scarlet\nRhapsody",3*w/4,7*h/20);
+		textSize(get_size(10,w/2,3*h/10,2));
+		text("1b: School\nMourn",w/4,7*h/20);
+		textSize(get_size(12,w/2,3*h/10,2));
+		text("1d: Scarlet\nRhapsody",3*w/4,7*h/20);
 		textSize(get_size(4,w/6,3*h/10));
 		text("midi",w/12,13*h/20);
 		text("mscz",w/4,13*h/20);
@@ -176,13 +176,15 @@ function draw(){
 		text("Etude 1/6: Sixths,\nAfter Chopin",w/4,31*h/80);
 		textSize(get_size(16,w/6,3*h/40,1));
 		text("Etude 1/7: March",w/4,43*h/80);
+		textSize(get_size(15,w/6,3*h/40,2));
+		text("Etude 1/8:\nScarlet's Trill",w/4,11*h/16);
 		for(var i=0;i<6;i++){
 			for(var j=0;j<4;j++){
 				var etude=4*i+j+1;
 				if(etude>22){
 					break;
 				}
-				if(etude>7){
+				if(etude>8){
 					textSize(get_size(7,w/6,3*h/20));
 					text("ETA son",w/12+i*w/6,11*h/40+3*j*h/20);
 					continue;
@@ -259,25 +261,25 @@ function mouseReleased(){
 		}
 		if(mouseY>h/5&&mouseY<4*h/5){
 			if(mouseX<w/6&&mouseY>h/2&&mouseY<4*h<5){
-				redirect("./School_Mourn.mid");
+				redirect("./1b-School-Mourn.mid");
 			}
 			if(mouseX<w/3&&mouseX>w/6&&mouseY>h/2&&mouseY<4*h<5){
-				redirect("./School_Mourn.mscz");
+				redirect("./1b-School-Mourn.mscz");
 			}
 			if(mouseX<w/2&&mouseX>w/3&&mouseY>h/2&&mouseY<4*h<5){
-				redirect("./School_Mourn.pdf");
+				redirect("./1b-School-Mourn.pdf");
 			}
 			if(mouseX<5*w/8&&mouseX>w/2&&mouseY>h/2&&mouseY<4*h<5){
-				redirect("./Scarlet_Rhapsody.mid");
+				redirect("./1d-Scarlet-Rhapsody.mid");
 			}
 			if(mouseX<3*w/4&&mouseX>5*w/8&&mouseY>h/2&&mouseY<4*h<5){
-				redirect("./Scarlet_Rhapsody.mp3");
+				redirect("./1d-Scarlet-Rhapsody.mp3");
 			}
 			if(mouseX<7*w/8&&mouseX>3*w/4&&mouseY>h/2&&mouseY<4*h<5){
-				redirect("./Scarlet_Rhapsody.mscz");
+				redirect("./1d-Scarlet-Rhapsody.mscz");
 			}
 			if(mouseX>7*w/8&&mouseY>h/2&&mouseY<4*h<5){
-				redirect("./Scarlet_Rhapsody.pdf");
+				redirect("./1d-Scarlet-Rhapsody.pdf");
 			}
 		}
 		return;
@@ -296,7 +298,7 @@ function mouseReleased(){
 			var f=Math.floor(mouseX*24/w)%4;
 			var etude=4*x+y+1;
 			var extension=["mid","mp3","mscz","pdf"][f];
-			if(etude>7){
+			if(etude>8){
 				return;
 			}
 			if(etude===1){
@@ -325,6 +327,10 @@ function mouseReleased(){
 			}
 			if(etude===7){
 				redirect("./Etude 1-7-March."+extension);
+				return;
+			}
+			if(etude===8){
+				redirect("./Etude 1-8-Scarlet-Trill."+extension);
 				return;
 			}
 		}
