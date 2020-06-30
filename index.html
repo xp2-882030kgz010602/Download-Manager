@@ -112,8 +112,14 @@ function draw(){
 		text("Download\nall as ZIP",9*w/10,9*h/10);
 		for(var i=0;i<4;i++){
 			for(var j=0;j<3;j++){
-				textSize(get_size(6+((j+3*i+1)+"").length,w/4,h/10));
-				text("Etude "+(j+3*i+1),i*w/4+w/8,h/4+j*h/5);
+				textSize(get_size(10+((j+3*i+1)+"").length,w/4,h/10));
+				var identifier;
+				if((j+3*i+1)<12){
+					identifier="1bz-";
+				}else if((j+3*i+1)===12){
+					identifier="1cb-";
+				}
+				text(identifier+"Etude "+(j+3*i+1),i*w/4+w/8,h/4+j*h/5);
 				for(var k=0;k<3;k++){
 					if(i===3&&j===2){
 						break;
@@ -235,7 +241,7 @@ function mouseReleased(){
 		if(mouseX>3*w/4&&mouseY<7*h/10&&mouseY>3*h/5){
 			var f=Math.floor(mouseX*16/w)%4;
 			var extension=["mid","mp3","mscz","pdf"][f];
-			redirect("./XII."+extension);
+			redirect("./1cb-XII."+extension);
 		}
 		if(mouseY>h/5&&mouseY<4*h/5){
 			var x=Math.floor(mouseX*4/w);
@@ -248,9 +254,9 @@ function mouseReleased(){
 			var etude=3*x+y+1;
 			var extension=["mid",/*"mp3",*/"mscz","pdf"][f];
 			if(etude<12){
-				redirect("./Freedom_Dive_Etude_"+etude+"."+extension);
+				redirect("./1bz-Freedom_Dive_Etude_"+etude+"."+extension);
 			}else{
-				redirect("./XII."+extension);
+				redirect("./1cb-XII."+extension);
 			}
 		}
 		return;
