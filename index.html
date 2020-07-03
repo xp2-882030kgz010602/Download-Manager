@@ -77,7 +77,7 @@ function draw(){
 				if(etude>22){
 					break;
 				}
-				if(etude>9){
+				if(etude>10){
 					rect(i*w/6,h/5+j*3*h/20,w/6,3*h/20);
 					continue;
 				}
@@ -186,13 +186,15 @@ function draw(){
 		text("Etude 1/8:\nScarlet's Trill",w/4,11*h/16);
 		textSize(get_size(21,w/6,3*h/40,2));
 		text("Etude 1/9: Bad Apple\nVariations, After ZUN",5*w/12,19*h/80);
+		textSize(get_size(10,w/6,3*h/40,2));
+		text("Etude 1/10:\nWaterfall",5*w/12,31*h/80);
 		for(var i=0;i<6;i++){
 			for(var j=0;j<4;j++){
 				var etude=4*i+j+1;
 				if(etude>22){
 					break;
 				}
-				if(etude>9){
+				if(etude>10){
 					textSize(get_size(7,w/6,3*h/20));
 					text("ETA son",w/12+i*w/6,11*h/40+3*j*h/20);
 					continue;
@@ -306,7 +308,7 @@ function mouseReleased(){
 			var f=Math.floor(mouseX*24/w)%4;
 			var etude=4*x+y+1;
 			var extension=["mid","mp3","mscz","pdf"][f];
-			if(etude>9){
+			if(etude>10){
 				return;
 			}
 			if(etude===1){
@@ -343,6 +345,10 @@ function mouseReleased(){
 			}
 			if(etude===9){
 				redirect("./Etude 1-9-Bad-Apple-Variations."+extension);
+				return;
+			}
+			if(etude===10){
+				redirect("./Etude 1-10-Waterfall."+extension);
 				return;
 			}
 		}
